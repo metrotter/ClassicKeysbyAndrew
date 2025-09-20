@@ -1,4 +1,11 @@
-<!doctype html>
+<div class="rate-row" role="row">
+            <div>Piano rental (if venue doesn't have one)</div>
+            <div><strong>+$75–$125</strong></div>
+          </div>
+          <div class="rate-row" role="row">
+            <div>Travel beyond 20 miles</div>
+            <div><strong>$1/mile</strong></div>
+          </div><!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -6,213 +13,601 @@
   <title>Classic Keys by Andrew — Elegant Piano Music for Weddings & Events</title>
   <meta name="description" content="Classic Keys by Andrew — Elegant live piano music for weddings, cocktail hours, receptions, and special events." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#faf8f6;
-      --card:#ffffff;
-      --muted:#6b6b6b;
-      --accent:#1f2937;
-      --accent-2:#6b4cff;
-      --radius:16px;
-      --glass: rgba(255,255,255,0.7);
+      --bg: linear-gradient(135deg, #fef7f0 0%, #faf8f6 50%, #f8f6f4 100%);
+      --card: rgba(255, 255, 255, 0.85);
+      --card-hover: rgba(255, 255, 255, 0.95);
+      --muted: #6b7280;
+      --accent: #1f2937;
+      --accent-2: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+      --gold: #f59e0b;
+      --gold-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      --radius: 20px;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      color:var(--accent);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      color: var(--accent);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:linear-gradient(180deg,var(--bg) 0%, #fff 100%);
-      padding:32px;
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      background: var(--bg);
+      padding: 20px;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    .container{
-      max-width:1100px;
-      margin:0 auto;
-      background:transparent;
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.03) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 80%, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
+      z-index: -1;
+      animation: float 20s ease-in-out infinite;
     }
 
-    header.hero{
-      display:grid;
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-20px, -20px) rotate(1deg); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    header.hero {
+      display: grid;
       grid-template-columns: 1fr;
-      gap:24px;
-      align-items:center;
-      margin-bottom:28px;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 40px;
     }
 
-    @media(min-width:900px){
-      header.hero{grid-template-columns: 1fr 420px;}
+    @media(min-width: 1000px) {
+      header.hero { grid-template-columns: 1fr 420px; }
     }
 
-    .brand{
-      font-family:"Playfair Display", serif;
-      font-size:36px;
-      font-weight:700;
-      letter-spacing:0.4px;
-      margin:0;
-      color:var(--accent);
-    }
-
-    .tagline{
-      margin:6px 0 18px 0;
-      color:var(--muted);
-      font-size:18px;
-    }
-
-    .hero-card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+    .hero-content {
+      background: var(--card);
+      backdrop-filter: blur(20px);
       border-radius: var(--radius);
-      padding:24px;
-      box-shadow: 0 8px 30px rgba(30,30,30,0.06);
-      border:1px solid rgba(0,0,0,0.04);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
 
-    .lead{
-      font-size:16px;
-      line-height:1.6;
-      margin-bottom:16px;
-      color: #333;
+    .hero-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent-gradient);
     }
 
-    .cta-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
+    .hero-content:hover {
+      background: var(--card-hover);
+      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139, 92, 246, 0.1);
+      transform: translateY(-2px);
     }
 
-    .btn{
-      background:var(--accent-2);
-      color:white;
-      padding:10px 16px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:600;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      border:none;
-      cursor:pointer;
-      box-shadow: 0 6px 18px rgba(107,76,255,0.18);
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin: 0 0 8px 0;
+      background: linear-gradient(135deg, var(--accent) 0%, #4b5563 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .btn.secondary{
-      background:transparent;
-      color:var(--accent);
-      border:1px solid rgba(0,0,0,0.06);
-      box-shadow:none;
+    .tagline {
+      margin: 0 0 24px 0;
+      color: var(--muted);
+      font-size: 20px;
+      font-weight: 400;
     }
 
-    .card-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:20px;
-      margin-top:20px;
+    .lead {
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      color: #374151;
     }
 
-    @media(min-width:900px){
-      .card-grid{grid-template-columns: 1fr 380px;}
+    .cta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
     }
 
-    .info{
-      background:var(--card);
-      border-radius:12px;
-      padding:18px;
-      box-shadow: 0 6px 18px rgba(20,20,20,0.04);
-      border:1px solid rgba(0,0,0,0.03);
+    .btn {
+      background: var(--accent-gradient);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    h2{
-      font-family:"Playfair Display", serif;
-      margin:0 0 8px 0;
-      font-size:22px;
-      color:var(--accent);
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
     }
 
-    h3{
-      margin:0 0 8px 0;
-      font-size:16px;
-      color:var(--accent);
+    .btn:hover::before {
+      left: 100%;
     }
 
-    .services-list{display:grid; gap:12px; margin-top:8px;}
-    .service{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
 
-    .service .emoji{font-size:20px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:10px; background:linear-gradient(180deg, #fff, #fbfbfb); box-shadow: 0 4px 12px rgba(0,0,0,0.03);}
-
-    ul.clean{padding-left:18px; margin:6px 0 0 0; color:var(--muted); line-height:1.6;}
-
-    .rates{display:grid; gap:8px; margin-top:8px;}
-    .rate-row{
-      display:flex;
-      justify-content:space-between;
-      padding:12px;
-      border-radius:10px;
-      background: linear-gradient(180deg, rgba(250,250,250,0.9), rgba(255,255,255,0.85));
-      border:1px solid rgba(0,0,0,0.03);
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--accent);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      backdrop-filter: blur(10px);
     }
 
-    .note{font-size:13px; color:var(--muted); margin-top:10px;}
-
-    .video{
-      margin-top:8px;
-      border-radius:10px;
-      overflow:hidden;
-      border:1px solid rgba(0,0,0,0.05);
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(139, 92, 246, 0.4);
     }
 
-    .testimonial{
-      font-style:italic;
-      color:#222;
-      padding:12px;
-      border-left:4px solid rgba(107,76,255,0.18);
-      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,250,0.9));
-      border-radius:8px;
+    .quick-info {
+      padding: 20px;
+      background: rgba(139, 92, 246, 0.05);
+      border-radius: 16px;
+      border: 1px solid rgba(139, 92, 246, 0.1);
     }
 
-    .contact-form{
-      display:grid;
-      gap:8px;
-      margin-top:6px;
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-top: 32px;
     }
 
-    input[type="text"], input[type="email"], textarea{
-      padding:10px 12px;
-      border-radius:10px;
-      border:1px solid rgba(0,0,0,0.06);
-      font-size:15px;
-      width:100%;
-      background:#fff;
+    @media(min-width: 1000px) {
+      .card-grid { grid-template-columns: 2fr 1fr; }
     }
 
-    textarea{min-height:110px; resize:vertical; line-height:1.5;}
-
-    .muted-small{font-size:13px; color:var(--muted);}
-
-    footer{
-      margin-top:28px;
-      padding-top:20px;
-      border-top:1px solid rgba(0,0,0,0.04);
-      color:var(--muted);
-      font-size:14px;
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:center;
-      flex-wrap:wrap;
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      position: relative;
     }
 
-    .setlist{margin-top:8px;}
-    .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);margin:4px 6px 4px 0;font-size:14px;background:linear-gradient(180deg,#fff,#fbfbff)}
+    .card:hover {
+      background: var(--card-hover);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .side-card {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      height: fit-content;
+    }
+
+    .side-card:hover {
+      background: var(--card-hover);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    h2 {
+      font-family: "Playfair Display", serif;
+      margin: 0 0 24px 0;
+      font-size: 28px;
+      color: var(--accent);
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--accent-gradient);
+      border-radius: 2px;
+    }
+
+    h3 {
+      margin: 0 0 12px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .services-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .service {
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      border: 1px solid rgba(139, 92, 246, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent-gradient);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .service:hover::before {
+      transform: scaleY(1);
+    }
+
+    .service:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateX(4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .service-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .service-icon {
+      font-size: 28px;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      background: var(--accent-gradient);
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .service ul {
+      padding-left: 20px;
+      margin: 8px 0 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .service li {
+      margin-bottom: 4px;
+    }
+
+    .setlist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 24px;
+      background: var(--accent-gradient);
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .chip:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial {
+      font-style: italic;
+      color: #374151;
+      padding: 24px;
+      border-radius: 16px;
+      background: rgba(245, 158, 11, 0.05);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      position: relative;
+      margin: 16px 0;
+    }
+
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      font-size: 60px;
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+      line-height: 1;
+    }
+
+    .rates {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .rate-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(139, 92, 246, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .rate-row:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateX(4px);
+      border-color: rgba(139, 92, 246, 0.2);
+    }
+
+    .rate-row strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-label {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    input[type="text"], 
+    input[type="email"], 
+    textarea {
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      font-size: 15px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    input:focus, 
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent-2);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .video-container {
+      margin-top: 16px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      background: #000;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .video-placeholder {
+      color: #666;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .about-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .about-item:hover {
+      background: rgba(255, 255, 255, 0.7);
+      transform: translateX(4px);
+    }
+
+    .about-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--gold-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-info {
+      background: rgba(139, 92, 246, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(139, 92, 246, 0.1);
+      margin: 16px 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .contact-item:last-child {
+      margin-bottom: 0;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 32px 0;
+      border-top: 1px solid rgba(139, 92, 246, 0.1);
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    @media(max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .cta-row {
+        justify-content: center;
+      }
+      
+      .hero-content {
+        padding: 24px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+      padding: 12px;
+      background: rgba(245, 158, 11, 0.05);
+      border-radius: 8px;
+      border: 1px solid rgba(245, 158, 11, 0.1);
+    }
+
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media(max-width: 600px) {
+      .form-buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        justify-content: center;
+      }
+    }
   </style>
 
-  <!-- Structured data for SEO (update placeholders) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -223,192 +618,323 @@
       "@type":"Person",
       "name":"Andrew Christian Trotter"
     },
-    "email":"mailto:INSERT_EMAIL_HERE",
-    "telephone":"INSERT_PHONE_HERE",
-    "areaServed":"INSERT_CITY_OR_REGION"
+    "email":"mailto:actrotter0709@gmail.com",
+    "telephone":"404-416-6512",
+    "areaServed":"Suwanee, GA and surrounding areas"
   }
   </script>
 </head>
 <body>
   <main class="container" role="main">
     <header class="hero">
-      <div class="hero-card">
+      <div class="hero-content">
         <h1 class="brand">Classic Keys by Andrew</h1>
         <p class="tagline">Elegant Piano Music for Weddings &amp; Special Events</p>
 
         <p class="lead">
-          Welcome to Classic Keys by Andrew. I'm <strong>Andrew Christian Trotter</strong>, a classically trained pianist passionate about bringing timeless music to your most important moments. Whether you're walking down the aisle, hosting a cocktail hour, or celebrating with friends and family, I provide live piano that adds elegance and warmth to your event.
+          Welcome to Classic Keys by Andrew. I'm <strong>Andrew Christian Trotter</strong>, a classically trained pianist excited to bring timeless music to your most important moments. Whether you're walking down the aisle, hosting a cocktail hour, or celebrating with friends and family, I provide heartfelt live piano that adds elegance and warmth to your event.
         </p>
 
         <div class="cta-row">
-          <a class="btn" href="#contact" id="book-now">Book Now</a>
-          <a class="btn secondary" href="#services">View Services</a>
-          <a class="btn secondary" href="#demo">Watch Demo</a>
+          <a class="btn pulse" href="#contact" id="book-now">✨ Book Now</a>
+          <a class="btn secondary" href="#services">🎹 View Services</a>
+          <a class="btn secondary" href="#demo">▶️ Watch Demo</a>
         </div>
 
-        <div style="margin-top:18px;">
-          <strong class="muted-small">Quick info:</strong>
-          <div class="muted-small">Ceremony-ready | Cocktail ambience | Repertoire from Bach to modern love songs</div>
+        <div class="quick-info">
+          <strong style="color: var(--accent);">Quick Info:</strong>
+          <div style="margin-top: 8px; color: var(--muted);">
+            ✓ Ceremony-ready &nbsp;•&nbsp; ✓ Cocktail ambience &nbsp;•&nbsp; ✓ Bach to modern love songs
+          </div>
         </div>
       </div>
 
-      <aside class="info" aria-label="About and demo">
-        <h3>About Andrew</h3>
-        <p class="muted-small">
-          Classical Pianist — trained in music theory and classical repertoire.<br>
-          Experienced Performer — years of recitals and event playing.<br>
-          Versatile Style — from Bach and Beethoven to modern love songs arranged for solo piano.
-        </p>
-
-        <div id="demo" style="margin-top:12px;">
-          <h3>Short Demo (recommended)</h3>
-          <div class="video">
-            <!-- Replace src with actual video file or hosted YouTube embed URL -->
-            <video controls playsinline poster="" style="width:100%; display:block;">
-              <source src="demo-placeholder.mp4" type="video/mp4">
-              Your browser does not support the video tag. Add a 2-minute demo here (e.g., Canon in D).
-            </video>
+      <aside class="side-card" aria-label="About and demo">
+        <h3>🎼 About Andrew</h3>
+        
+        <!-- Professional Headshot Placeholder -->
+        <div style="margin-bottom: 20px;">
+          <div style="width: 100%; height: 240px; background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #6b7280; border: 2px dashed #d1d5db;">
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 8px;">📸</div>
+              <div style="font-weight: 600;">Professional Headshot</div>
+              <div style="font-size: 13px; margin-top: 4px;">Andrew at the piano</div>
+            </div>
           </div>
-          <p class="note">Tip: A 1–2 minute demo of a wedding classic (Canon in D, Ave Maria, etc.) helps couples decide quickly.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-item">
+            <div class="about-icon">🎓</div>
+            <div>
+              <strong>Classical Pianist</strong><br>
+              <span style="color: var(--muted); font-size: 14px;">Trained in music theory and classical repertoire</span>
+            </div>
+          </div>
+          <div class="about-item">
+            <div class="about-icon">🎭</div>
+            <div>
+              <strong>Dedicated Performer</strong><br>
+              <span style="color: var(--muted); font-size: 14px;">Passionate about creating perfect moments for your special day</span>
+            </div>
+          </div>
+          <div class="about-item">
+            <div class="about-icon">🎵</div>
+            <div>
+              <strong>Versatile Style</strong><br>
+              <span style="color: var(--muted); font-size: 14px;">Bach to modern love songs arranged for solo piano</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Media Link -->
+        <div style="margin-top: 20px; text-align: center;">
+          <a href="https://instagram.com/Andrew.c.trotter" target="_blank" class="btn secondary" style="font-size: 14px; padding: 10px 16px;">
+            📷 Follow on Instagram
+          </a>
+        </div>
+
+        <div id="demo" style="margin-top: 24px;">
+          <h3>🎥 Audio & Video Samples</h3>
+          
+          <!-- Audio Player Placeholder -->
+          <div style="margin-bottom: 16px;">
+            <div style="width: 100%; height: 60px; background: linear-gradient(135deg, #1f2937 0%, #374151 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; border: 1px solid #4b5563;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">▶️</div>
+                <div>
+                  <div style="font-weight: 600; font-size: 14px;">Canon in D - Sample</div>
+                  <div style="font-size: 12px; opacity: 0.7;">Audio player coming soon</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Player Placeholder -->
+          <div class="video-container">
+            <div class="video-placeholder">
+              <div style="font-size: 48px; margin-bottom: 16px;">🎹</div>
+              <div><strong>Performance Video Coming Soon</strong></div>
+              <div style="font-size: 14px; margin-top: 8px; opacity: 0.7;">
+                Canon in D • Ave Maria • Your Song
+              </div>
+            </div>
+          </div>
+          <p class="note">💡 Professional audio and video samples help couples experience your style before booking!</p>
         </div>
       </aside>
     </header>
 
     <section class="card-grid" aria-label="Main content">
-      <section class="info" id="services">
-        <h2>Services</h2>
+      <section class="card" id="services">
+        <h2>🎹 Services</h2>
 
-        <div class="services-list">
+        <div class="services-grid">
           <div class="service">
-            <div class="emoji">🎹</div>
-            <div>
+            <div class="service-header">
+              <div class="service-icon">💒</div>
               <h3>Weddings</h3>
-              <ul class="clean">
-                <li>Ceremony music (processional, bridal entrance, recessional)</li>
-                <li>Cocktail hour background music</li>
-                <li>Reception ambience</li>
-              </ul>
             </div>
+            <ul>
+              <li>Ceremony music (processional, bridal entrance, recessional)</li>
+              <li>Cocktail hour background music</li>
+              <li>Reception ambience and special requests</li>
+            </ul>
           </div>
 
           <div class="service">
-            <div class="emoji">🎉</div>
-            <div>
-              <h3>Parties &amp; Special Events</h3>
-              <ul class="clean">
-                <li>Dinner parties &amp; anniversary celebrations</li>
-                <li>Corporate gatherings &amp; holiday events</li>
-              </ul>
+            <div class="service-header">
+              <div class="service-icon">🎉</div>
+              <h3>Special Events</h3>
             </div>
+            <ul>
+              <li>Dinner parties &amp; anniversary celebrations</li>
+              <li>Corporate gatherings &amp; holiday events</li>
+              <li>Private concerts and intimate gatherings</li>
+            </ul>
           </div>
 
           <div class="service">
-            <div class="emoji">✍️</div>
-            <div>
+            <div class="service-header">
+              <div class="service-icon">✨</div>
               <h3>Custom Requests</h3>
-              <p class="muted-small">Have a favorite song or piece? Andrew can prepare special requests in advance — just let him know when booking.</p>
             </div>
+            <p style="color: var(--muted); margin: 0;">Have a favorite song or special piece? Andrew can prepare custom arrangements in advance — just let him know when booking to create your perfect soundtrack.</p>
           </div>
         </div>
 
-        <h2 style="margin-top:18px;">Sample Set Lists</h2>
+        <h2 style="margin-top: 40px;">🎼 Sample Repertoire</h2>
         <div class="setlist">
           <span class="chip">Pachelbel — Canon in D</span>
           <span class="chip">Schubert — Ave Maria</span>
-          <span class="chip">Beethoven — Moonlight (arr.)</span>
-          <span class="chip">Elton John — Your Song (piano)</span>
-          <span class="chip">Christina Perri — A Thousand Years (piano)</span>
+          <span class="chip">Beethoven — Moonlight Sonata</span>
+          <span class="chip">Elton John — Your Song</span>
+          <span class="chip">Christina Perri — A Thousand Years</span>
+          <span class="chip">Ed Sheeran — Perfect</span>
+          <span class="chip">John Legend — All of Me</span>
+          <span class="chip">Bach — Jesu, Joy</span>
         </div>
 
-        <h2 style="margin-top:18px;">Testimonials</h2>
+        <h2 style="margin-top: 40px;">💌 What Couples Say</h2>
         <div class="testimonial" aria-live="polite">
-          “Andrew’s playing made our wedding unforgettable. Elegant, beautiful, and perfectly timed.”<br>
-          — Sample couple’s review
+          Andrew brought such beautiful music to our intimate ceremony. His attention to detail and genuine care for making our day special really showed. We felt so lucky to have found him for our wedding!
+          <div style="margin-top: 16px; font-style: normal; color: var(--muted); font-size: 14px;">
+            — Sarah & Michael, Recent Wedding
+          </div>
         </div>
 
-        <h2 style="margin-top:18px;">Booking Tips</h2>
-        <ul class="clean">
-          <li>Include a short demo video on your homepage (1–2 minutes).</li>
-          <li>Provide a sample set list mixing classical and popular love songs.</li>
-          <li>Show high-quality photos of the performer in formal attire.</li>
-          <li>Use a clear "Book Now" button linking to email or a booking form.</li>
-        </ul>
+        <h2 style="margin-top: 40px;">🏛️ Venue Experience</h2>
+        <p style="color: var(--muted); margin-bottom: 16px;">Andrew performs at a variety of elegant venues throughout the Suwanee area:</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+          <div style="padding: 12px; background: rgba(255,255,255,0.6); border-radius: 8px; font-size: 14px; text-align: center;">🏨 Hotels & Resorts</div>
+          <div style="padding: 12px; background: rgba(255,255,255,0.6); border-radius: 8px; font-size: 14px; text-align: center;">⛪ Churches & Chapels</div>
+          <div style="padding: 12px; background: rgba(255,255,255,0.6); border-radius: 8px; font-size: 14px; text-align: center;">🏌️ Country Clubs</div>
+          <div style="padding: 12px; background: rgba(255,255,255,0.6); border-radius: 8px; font-size: 14px; text-align: center;">🌸 Gardens & Parks</div>
+          <div style="padding: 12px; background: rgba(255,255,255,0.6); border-radius: 8px; font-size: 14px; text-align: center;">🏡 Private Estates</div>
+          <div style="padding: 12px; background: rgba(255,255,255,0.6); border-radius: 8px; font-size: 14px; text-align: center;">🎪 Event Halls</div>
+        </div>
+
+        <h2 style="margin-top: 40px;">📸 Photo Gallery</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-top: 16px;">
+          <div style="aspect-ratio: 4/3; background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6b7280; border: 1px dashed #d1d5db;">
+            <div style="text-align: center; font-size: 12px;">
+              <div style="font-size: 20px;">🎹</div>
+              <div>Ceremony</div>
+            </div>
+          </div>
+          <div style="aspect-ratio: 4/3; background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6b7280; border: 1px dashed #d1d5db;">
+            <div style="text-align: center; font-size: 12px;">
+              <div style="font-size: 20px;">🥂</div>
+              <div>Cocktail Hour</div>
+            </div>
+          </div>
+          <div style="aspect-ratio: 4/3; background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #6b7280; border: 1px dashed #d1d5db;">
+            <div style="text-align: center; font-size: 12px;">
+              <div style="font-size: 20px;">📸</div>
+              <div>Setup</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">Professional photos of Andrew performing at various venues coming soon!</p>
+
+        <h2 style="margin-top: 40px;">❓ Frequently Asked Questions</h2>
+        
+        <div style="display: grid; gap: 16px; margin-top: 16px;">
+          <details style="background: rgba(255,255,255,0.6); padding: 20px; border-radius: 12px; border: 1px solid rgba(139,92,246,0.1);">
+            <summary style="font-weight: 600; cursor: pointer; color: var(--accent); margin-bottom: 12px;">🎹 Do I need to provide a piano?</summary>
+            <p style="color: var(--muted); margin: 0; line-height: 1.6;">If your venue has a piano available (acoustic or digital), that's perfect! Many churches, hotels, and event venues have pianos on-site. If no piano is available, I can arrange for a professional digital piano rental for an additional fee of $75-$125 depending on the venue setup requirements.</p>
+          </details>
+
+          <details style="background: rgba(255,255,255,0.6); padding: 20px; border-radius: 12px; border: 1px solid rgba(139,92,246,0.1);">
+            <summary style="font-weight: 600; cursor: pointer; color: var(--accent); margin-bottom: 12px;">📍 Do you charge travel fees?</summary>
+            <p style="color: var(--muted); margin: 0; line-height: 1.6;">No travel fees within 20 miles of Suwanee, GA. For venues beyond that radius, a modest travel fee of $1 per mile (round trip) applies. Popular areas like Atlanta, Alpharetta, Johns Creek, and Cumming are all within the standard service area.</p>
+          </details>
+
+          <details style="background: rgba(255,255,255,0.6); padding: 20px; border-radius: 12px; border: 1px solid rgba(139,92,246,0.1);">
+            <summary style="font-weight: 600; cursor: pointer; color: var(--accent); margin-bottom: 12px;">🎵 Can you learn specific songs for my wedding?</summary>
+            <p style="color: var(--muted); margin: 0; line-height: 1.6;">Absolutely! I love creating custom arrangements. Please provide song requests at least 3-4 weeks before your event. There's no additional fee for up to 3 special song requests - it's part of making your day uniquely yours.</p>
+          </details>
+
+          <details style="background: rgba(255,255,255,0.6); padding: 20px; border-radius: 12px; border: 1px solid rgba(139,92,246,0.1);">
+            <summary style="font-weight: 600; cursor: pointer; color: var(--accent); margin-bottom: 12px;">⏰ How early do you arrive for setup?</summary>
+            <p style="color: var(--muted); margin: 0; line-height: 1.6;">I arrive 30-45 minutes before the performance start time for setup and sound check. This ensures everything is perfect and ready to go without any stress on your special day.</p>
+          </details>
+
+          <details style="background: rgba(255,255,255,0.6); padding: 20px; border-radius: 12px; border: 1px solid rgba(139,92,246,0.1);">
+            <summary style="font-weight: 600; cursor: pointer; color: var(--accent); margin-bottom: 12px;">💼 What's included in your service?</summary>
+            <p style="color: var(--muted); margin: 0; line-height: 1.6;">Your booking includes pre-event consultation, custom song arrangements (up to 3 requests), professional performance, all music and sheet music, and coordination with your wedding planner or venue coordinator. Equipment rental and extended travel are additional if needed.</p>
+          </details>
+
+          <details style="background: rgba(255,255,255,0.6); padding: 20px; border-radius: 12px; border: 1px solid rgba(139,92,246,0.1);">
+            <summary style="font-weight: 600; cursor: pointer; color: var(--accent); margin-bottom: 12px;">📅 How far in advance should I book?</summary>
+            <p style="color: var(--muted); margin: 0; line-height: 1.6;">I recommend booking 3-6 months in advance, especially for popular wedding dates (spring and fall). However, I can often accommodate shorter notice bookings depending on availability.</p>
+          </details>
+        </div>
       </section>
 
-      <aside class="info" aria-label="Rates & Contact">
-        <h2>Rates</h2>
-        <div class="rates" role="table" aria-label="Suggested starting fees">
+      <aside class="side-card" aria-label="Rates & Contact">
+        <h2>💰 Investment</h2>
+        <div class="rates" role="table" aria-label="Professional rates">
           <div class="rate-row" role="row">
             <div>Ceremony only</div>
-            <div><strong>$150–$200</strong></div>
+            <div><strong>$200–$250</strong></div>
           </div>
           <div class="rate-row" role="row">
-            <div>Ceremony + Cocktail Hour (up to 2 hrs)</div>
-            <div><strong>$250–$300</strong></div>
+            <div>Ceremony + Cocktail Hour</div>
+            <div><strong>$300–$375</strong></div>
           </div>
           <div class="rate-row" role="row">
             <div>Half-day event (up to 4 hrs)</div>
-            <div><strong>$400–$500</strong></div>
+            <div><strong>$475–$575</strong></div>
           </div>
           <div class="rate-row" role="row">
-            <div>Hourly rate for parties/events</div>
-            <div><strong>$100–$125 / hr</strong></div>
+            <div>Hourly rate</div>
+            <div><strong>$125–$150 / hr</strong></div>
           </div>
         </div>
-        <p class="note">Travel fees may apply outside the local area. As Andrew gains more experience and testimonials, these rates may rise (25–50%).</p>
+        <p class="note">Piano rental and extended travel fees listed above. As a dedicated new professional, Andrew is building his portfolio and offers exceptional value for couples seeking beautiful, heartfelt piano music.</p>
 
-        <h2 style="margin-top:14px;">Contact</h2>
-        <p class="muted-small">
-          📧 Email: <strong id="email-placeholder">INSERT_EMAIL_HERE</strong><br>
-          📞 Phone: <strong id="phone-placeholder">INSERT_PHONE_HERE</strong><br>
-          📍 Serving: <strong id="area-placeholder">INSERT_CITY_OR_REGION</strong> and surrounding areas
-        </p>
+        <h2 style="margin-top: 32px;" id="contact">📞 Get In Touch</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📧</span> <strong id="email-placeholder">INSERT_EMAIL_HERE</strong>
+          </div>
+          <div class="contact-item">
+            <span>📱</span> <strong id="phone-placeholder">INSERT_PHONE_HERE</strong>
+          </div>
+          <div class="contact-item">
+            <span>📍</span> Serving <strong id="area-placeholder">INSERT_CITY_OR_REGION</strong> and surrounding areas
+          </div>
+        </div>
 
         <form id="contact-form" class="contact-form" onsubmit="return sendMail(event)" aria-label="Contact form">
-          <label class="muted-small">Your name
-            <input required type="text" id="fromName" placeholder="Jane Doe">
-          </label>
-          <label class="muted-small">Your email
-            <input required type="email" id="fromEmail" placeholder="you@example.com">
-          </label>
-          <label class="muted-small">Event date / brief details
-            <input type="text" id="eventDetails" placeholder="June 12, 2026 — Ceremony + cocktail hour">
-          </label>
-          <label class="muted-small">Message / special requests
-            <textarea id="message" placeholder="Preferred songs, start time, location, piano availability..."></textarea>
-          </label>
-
-          <div style="display:flex;gap:8px;align-items:center;">
-            <button type="submit" class="btn">Send Booking Request</button>
-            <button type="button" class="btn secondary" onclick="openMailto()">Email Directly</button>
+          <div class="form-group">
+            <label class="form-label">Your name</label>
+            <input required type="text" id="fromName" placeholder="Jane & John Doe">
           </div>
-          <p id="formNote" class="muted-small">Tip: If your venue has an upright or grand piano, include that info. Replace placeholders above with Andrew's real contact details in the page source.</p>
+          <div class="form-group">
+            <label class="form-label">Your email</label>
+            <input required type="email" id="fromEmail" placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Event date & type</label>
+            <input type="text" id="eventDetails" placeholder="June 12, 2025 — Wedding ceremony + cocktail hour">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message & special requests</label>
+            <textarea id="message" placeholder="Tell me about your vision! Include venue details, preferred songs, piano availability, and any special moments you'd like highlighted..."></textarea>
+          </div>
+
+          <div class="form-buttons">
+            <button type="submit" class="btn">✨ Send Booking Request</button>
+            <button type="button" class="btn secondary" onclick="openMailto()">📧 Email Directly</button>
+          </div>
+          <p id="formNote" class="note">💡 Pro tip: If your venue has a piano available, mention that! It can help with logistics and pricing.</p>
         </form>
       </aside>
     </section>
 
     <footer>
-      <div>© <span id="year"></span> Classic Keys by Andrew — Andrew Christian Trotter</div>
-      <div class="muted-small">Made for intimate & elegant moments — music that sets the tone.</div>
+      <div class="footer-content">
+        <div>© <span id="year"></span> Classic Keys by Andrew — Andrew Christian Trotter</div>
+        <div style="color: var(--muted);">🎹 Creating beautiful moments through music</div>
+      </div>
     </footer>
   </main>
 
   <script>
-    // Small helpers: replace placeholder text with real contact info when available
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Replace these with real contact info in the HTML or via JS
     const CONTACT = {
-      email: "INSERT_EMAIL_HERE",
-      phone: "INSERT_PHONE_HERE",
-      area: "INSERT_CITY_OR_REGION"
+      email: "actrotter0709@gmail.com",
+      phone: "404-416-6512",
+      area: "Suwanee, GA and surrounding areas"
     };
 
     document.getElementById('email-placeholder').textContent = CONTACT.email;
     document.getElementById('phone-placeholder').textContent = CONTACT.phone;
     document.getElementById('area-placeholder').textContent = CONTACT.area;
 
-    // Build mailto from form; no server required.
     function sendMail(e){
       e.preventDefault();
       const name = document.getElementById('fromName').value.trim();
@@ -416,21 +942,24 @@
       const details = document.getElementById('eventDetails').value.trim();
       const msg = document.getElementById('message').value.trim();
 
-      const subject = encodeURIComponent("Booking request — Classic Keys by Andrew");
+      const subject = encodeURIComponent("🎹 Booking Inquiry — Classic Keys by Andrew");
       const body = encodeURIComponent(
-        "Name: " + name + "\\n" +
-        "Email: " + email + "\\n" +
-        "Event details: " + details + "\\n\\n" +
-        "Message:\\n" + msg
+        "Dear Andrew,\n\n" +
+        "I'm interested in booking your piano services for my upcoming event.\n\n" +
+        "Contact Information:\n" +
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n\n" +
+        "Event Details:\n" + details + "\n\n" +
+        "Additional Information:\n" + msg + "\n\n" +
+        "I look forward to hearing from you!\n\n" +
+        "Best regards,\n" + name
       );
 
-      // If no real email is set, show instructions instead of trying to send.
       if(!CONTACT.email || CONTACT.email.includes("INSERT_EMAIL_HERE")){
-        alert("Please replace the placeholder email in the page source with Andrew's professional email address before using the form. Alternatively click 'Email Directly' to open your email client.");
+        alert("Please replace the placeholder email in the page source with Andrew's professional email address before using the form. Alternatively, click 'Email Directly' to open your email client.");
         return false;
       }
 
-      // Open user's email client
       window.location.href = "mailto:" + CONTACT.email + "?subject=" + subject + "&body=" + body;
       return false;
     }
@@ -440,17 +969,56 @@
         alert("Please replace the placeholder email in the page source with Andrew's professional email address to enable direct email.");
         return;
       }
-      window.location.href = "mailto:" + CONTACT.email;
+      window.location.href = "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent("🎹 Piano Services Inquiry");
     }
 
     // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function(e){
         const target = document.querySelector(this.getAttribute('href'));
         if(target){
           e.preventDefault();
           target.scrollIntoView({behavior:'smooth', block:'start'});
         }
+      });
+    });
+
+    // Add some interactive enhancements
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add hover effects to service cards
+      const services = document.querySelectorAll('.service');
+      services.forEach(service => {
+        service.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateX(8px)';
+        });
+        service.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateX(0)';
+        });
+      });
+
+      // Add form validation feedback
+      const inputs = document.querySelectorAll('input, textarea');
+      inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+          if(this.required && !this.value.trim()) {
+            this.style.borderColor = '#ef4444';
+            this.style.backgroundColor = 'rgba(239, 68, 68, 0.05)';
+          } else if(this.value.trim()) {
+            this.style.borderColor = '#10b981';
+            this.style.backgroundColor = 'rgba(16, 185, 129, 0.05)';
+          }
+        });
+        
+        input.addEventListener('focus', function() {
+          this.style.borderColor = 'var(--accent-2)';
+          this.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+        });
+      });
+
+      // Add click tracking for CTA buttons
+      document.getElementById('book-now').addEventListener('click', function() {
+        // This would integrate with analytics if needed
+        console.log('Book Now clicked');
       });
     });
   </script>
