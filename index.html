@@ -1,114 +1,458 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Classic Keys by Andrew — Elegant Piano Music for Weddings & Events</title>
+  <meta name="description" content="Classic Keys by Andrew — Elegant live piano music for weddings, cocktail hours, receptions, and special events." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#faf8f6;
+      --card:#ffffff;
+      --muted:#6b6b6b;
+      --accent:#1f2937;
+      --accent-2:#6b4cff;
+      --radius:16px;
+      --glass: rgba(255,255,255,0.7);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--accent);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg) 0%, #fff 100%);
+      padding:32px;
+    }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-}
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      background:transparent;
+    }
 
-header nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-}
+    header.hero{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:24px;
+      align-items:center;
+      margin-bottom:28px;
+    }
 
-header nav ul li {
-    margin: 0 15px;
-}
+    @media(min-width:900px){
+      header.hero{grid-template-columns: 1fr 420px;}
+    }
 
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-}
+    .brand{
+      font-family:"Playfair Display", serif;
+      font-size:36px;
+      font-weight:700;
+      letter-spacing:0.4px;
+      margin:0;
+      color:var(--accent);
+    }
 
-.hero {
-    background: url('piano-hero.jpg') no-repeat center center/cover;
-    color: #fff;
-    text-align: center;
-    padding: 100px 0;
-}
+    .tagline{
+      margin:6px 0 18px 0;
+      color:var(--muted);
+      font-size:18px;
+    }
 
-.hero h1 {
-    font-size: 3rem;
-}
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+      border-radius: var(--radius);
+      padding:24px;
+      box-shadow: 0 8px 30px rgba(30,30,30,0.06);
+      border:1px solid rgba(0,0,0,0.04);
+    }
 
-.hero p {
-    font-size: 1.5rem;
-    margin: 20px 0;
-}
+    .lead{
+      font-size:16px;
+      line-height:1.6;
+      margin-bottom:16px;
+      color: #333;
+    }
 
-.hero .btn {
-    background-color: #e67e22;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
 
-.hero .demo-video iframe {
-    width: 100%;
-    height: 315px;
-    margin-top: 20px;
-}
+    .btn{
+      background:var(--accent-2);
+      color:white;
+      padding:10px 16px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:none;
+      cursor:pointer;
+      box-shadow: 0 6px 18px rgba(107,76,255,0.18);
+    }
 
-section {
-    padding: 50px;
-    text-align: center;
-}
+    .btn.secondary{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow:none;
+    }
 
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
+    .card-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:20px;
+      margin-top:20px;
+    }
 
-.service {
-    margin: 20px 0;
-}
+    @media(min-width:900px){
+      .card-grid{grid-template-columns: 1fr 380px;}
+    }
 
-ul {
-    list-style: none;
-    padding-left: 0;
-}
+    .info{
+      background:var(--card);
+      border-radius:12px;
+      padding:18px;
+      box-shadow: 0 6px 18px rgba(20,20,20,0.04);
+      border:1px solid rgba(0,0,0,0.03);
+    }
 
-ul li {
-    margin: 5px 0;
-}
+    h2{
+      font-family:"Playfair Display", serif;
+      margin:0 0 8px 0;
+      font-size:22px;
+      color:var(--accent);
+    }
 
-#contact-form input,
-#contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 1rem;
-}
+    h3{
+      margin:0 0 8px 0;
+      font-size:16px;
+      color:var(--accent);
+    }
 
-#contact-form button {
-    background-color: #e67e22;
-    color: white;
-    padding: 12px 20px;
-    font-size: 1.2rem;
-    border: none;
-    cursor: pointer;
-}
+    .services-list{display:grid; gap:12px; margin-top:8px;}
+    .service{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
 
-#contact-form button:hover {
-    background-color: #d35400;
-}
+    .service .emoji{font-size:20px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:10px; background:linear-gradient(180deg, #fff, #fbfbfb); box-shadow: 0 4px 12px rgba(0,0,0,0.03);}
 
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-}
+    ul.clean{padding-left:18px; margin:6px 0 0 0; color:var(--muted); line-height:1.6;}
+
+    .rates{display:grid; gap:8px; margin-top:8px;}
+    .rate-row{
+      display:flex;
+      justify-content:space-between;
+      padding:12px;
+      border-radius:10px;
+      background: linear-gradient(180deg, rgba(250,250,250,0.9), rgba(255,255,255,0.85));
+      border:1px solid rgba(0,0,0,0.03);
+    }
+
+    .note{font-size:13px; color:var(--muted); margin-top:10px;}
+
+    .video{
+      margin-top:8px;
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,0.05);
+    }
+
+    .testimonial{
+      font-style:italic;
+      color:#222;
+      padding:12px;
+      border-left:4px solid rgba(107,76,255,0.18);
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,250,0.9));
+      border-radius:8px;
+    }
+
+    .contact-form{
+      display:grid;
+      gap:8px;
+      margin-top:6px;
+    }
+
+    input[type="text"], input[type="email"], textarea{
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(0,0,0,0.06);
+      font-size:15px;
+      width:100%;
+      background:#fff;
+    }
+
+    textarea{min-height:110px; resize:vertical; line-height:1.5;}
+
+    .muted-small{font-size:13px; color:var(--muted);}
+
+    footer{
+      margin-top:28px;
+      padding-top:20px;
+      border-top:1px solid rgba(0,0,0,0.04);
+      color:var(--muted);
+      font-size:14px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .setlist{margin-top:8px;}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid rgba(0,0,0,0.06);margin:4px 6px 4px 0;font-size:14px;background:linear-gradient(180deg,#fff,#fbfbff)}
+  </style>
+
+  <!-- Structured data for SEO (update placeholders) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"MusicGroup",
+    "name":"Classic Keys by Andrew",
+    "description":"Live classical and romantic piano for weddings, cocktail hours, receptions and special events.",
+    "founder":{
+      "@type":"Person",
+      "name":"Andrew Christian Trotter"
+    },
+    "email":"mailto:INSERT_EMAIL_HERE",
+    "telephone":"INSERT_PHONE_HERE",
+    "areaServed":"INSERT_CITY_OR_REGION"
+  }
+  </script>
+</head>
+<body>
+  <main class="container" role="main">
+    <header class="hero">
+      <div class="hero-card">
+        <h1 class="brand">Classic Keys by Andrew</h1>
+        <p class="tagline">Elegant Piano Music for Weddings &amp; Special Events</p>
+
+        <p class="lead">
+          Welcome to Classic Keys by Andrew. I'm <strong>Andrew Christian Trotter</strong>, a classically trained pianist passionate about bringing timeless music to your most important moments. Whether you're walking down the aisle, hosting a cocktail hour, or celebrating with friends and family, I provide live piano that adds elegance and warmth to your event.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn" href="#contact" id="book-now">Book Now</a>
+          <a class="btn secondary" href="#services">View Services</a>
+          <a class="btn secondary" href="#demo">Watch Demo</a>
+        </div>
+
+        <div style="margin-top:18px;">
+          <strong class="muted-small">Quick info:</strong>
+          <div class="muted-small">Ceremony-ready | Cocktail ambience | Repertoire from Bach to modern love songs</div>
+        </div>
+      </div>
+
+      <aside class="info" aria-label="About and demo">
+        <h3>About Andrew</h3>
+        <p class="muted-small">
+          Classical Pianist — trained in music theory and classical repertoire.<br>
+          Experienced Performer — years of recitals and event playing.<br>
+          Versatile Style — from Bach and Beethoven to modern love songs arranged for solo piano.
+        </p>
+
+        <div id="demo" style="margin-top:12px;">
+          <h3>Short Demo (recommended)</h3>
+          <div class="video">
+            <!-- Replace src with actual video file or hosted YouTube embed URL -->
+            <video controls playsinline poster="" style="width:100%; display:block;">
+              <source src="demo-placeholder.mp4" type="video/mp4">
+              Your browser does not support the video tag. Add a 2-minute demo here (e.g., Canon in D).
+            </video>
+          </div>
+          <p class="note">Tip: A 1–2 minute demo of a wedding classic (Canon in D, Ave Maria, etc.) helps couples decide quickly.</p>
+        </div>
+      </aside>
+    </header>
+
+    <section class="card-grid" aria-label="Main content">
+      <section class="info" id="services">
+        <h2>Services</h2>
+
+        <div class="services-list">
+          <div class="service">
+            <div class="emoji">🎹</div>
+            <div>
+              <h3>Weddings</h3>
+              <ul class="clean">
+                <li>Ceremony music (processional, bridal entrance, recessional)</li>
+                <li>Cocktail hour background music</li>
+                <li>Reception ambience</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="service">
+            <div class="emoji">🎉</div>
+            <div>
+              <h3>Parties &amp; Special Events</h3>
+              <ul class="clean">
+                <li>Dinner parties &amp; anniversary celebrations</li>
+                <li>Corporate gatherings &amp; holiday events</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="service">
+            <div class="emoji">✍️</div>
+            <div>
+              <h3>Custom Requests</h3>
+              <p class="muted-small">Have a favorite song or piece? Andrew can prepare special requests in advance — just let him know when booking.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="margin-top:18px;">Sample Set Lists</h2>
+        <div class="setlist">
+          <span class="chip">Pachelbel — Canon in D</span>
+          <span class="chip">Schubert — Ave Maria</span>
+          <span class="chip">Beethoven — Moonlight (arr.)</span>
+          <span class="chip">Elton John — Your Song (piano)</span>
+          <span class="chip">Christina Perri — A Thousand Years (piano)</span>
+        </div>
+
+        <h2 style="margin-top:18px;">Testimonials</h2>
+        <div class="testimonial" aria-live="polite">
+          “Andrew’s playing made our wedding unforgettable. Elegant, beautiful, and perfectly timed.”<br>
+          — Sample couple’s review
+        </div>
+
+        <h2 style="margin-top:18px;">Booking Tips</h2>
+        <ul class="clean">
+          <li>Include a short demo video on your homepage (1–2 minutes).</li>
+          <li>Provide a sample set list mixing classical and popular love songs.</li>
+          <li>Show high-quality photos of the performer in formal attire.</li>
+          <li>Use a clear "Book Now" button linking to email or a booking form.</li>
+        </ul>
+      </section>
+
+      <aside class="info" aria-label="Rates & Contact">
+        <h2>Rates</h2>
+        <div class="rates" role="table" aria-label="Suggested starting fees">
+          <div class="rate-row" role="row">
+            <div>Ceremony only</div>
+            <div><strong>$150–$200</strong></div>
+          </div>
+          <div class="rate-row" role="row">
+            <div>Ceremony + Cocktail Hour (up to 2 hrs)</div>
+            <div><strong>$250–$300</strong></div>
+          </div>
+          <div class="rate-row" role="row">
+            <div>Half-day event (up to 4 hrs)</div>
+            <div><strong>$400–$500</strong></div>
+          </div>
+          <div class="rate-row" role="row">
+            <div>Hourly rate for parties/events</div>
+            <div><strong>$100–$125 / hr</strong></div>
+          </div>
+        </div>
+        <p class="note">Travel fees may apply outside the local area. As Andrew gains more experience and testimonials, these rates may rise (25–50%).</p>
+
+        <h2 style="margin-top:14px;">Contact</h2>
+        <p class="muted-small">
+          📧 Email: <strong id="email-placeholder">INSERT_EMAIL_HERE</strong><br>
+          📞 Phone: <strong id="phone-placeholder">INSERT_PHONE_HERE</strong><br>
+          📍 Serving: <strong id="area-placeholder">INSERT_CITY_OR_REGION</strong> and surrounding areas
+        </p>
+
+        <form id="contact-form" class="contact-form" onsubmit="return sendMail(event)" aria-label="Contact form">
+          <label class="muted-small">Your name
+            <input required type="text" id="fromName" placeholder="Jane Doe">
+          </label>
+          <label class="muted-small">Your email
+            <input required type="email" id="fromEmail" placeholder="you@example.com">
+          </label>
+          <label class="muted-small">Event date / brief details
+            <input type="text" id="eventDetails" placeholder="June 12, 2026 — Ceremony + cocktail hour">
+          </label>
+          <label class="muted-small">Message / special requests
+            <textarea id="message" placeholder="Preferred songs, start time, location, piano availability..."></textarea>
+          </label>
+
+          <div style="display:flex;gap:8px;align-items:center;">
+            <button type="submit" class="btn">Send Booking Request</button>
+            <button type="button" class="btn secondary" onclick="openMailto()">Email Directly</button>
+          </div>
+          <p id="formNote" class="muted-small">Tip: If your venue has an upright or grand piano, include that info. Replace placeholders above with Andrew's real contact details in the page source.</p>
+        </form>
+      </aside>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> Classic Keys by Andrew — Andrew Christian Trotter</div>
+      <div class="muted-small">Made for intimate & elegant moments — music that sets the tone.</div>
+    </footer>
+  </main>
+
+  <script>
+    // Small helpers: replace placeholder text with real contact info when available
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Replace these with real contact info in the HTML or via JS
+    const CONTACT = {
+      email: "INSERT_EMAIL_HERE",
+      phone: "INSERT_PHONE_HERE",
+      area: "INSERT_CITY_OR_REGION"
+    };
+
+    document.getElementById('email-placeholder').textContent = CONTACT.email;
+    document.getElementById('phone-placeholder').textContent = CONTACT.phone;
+    document.getElementById('area-placeholder').textContent = CONTACT.area;
+
+    // Build mailto from form; no server required.
+    function sendMail(e){
+      e.preventDefault();
+      const name = document.getElementById('fromName').value.trim();
+      const email = document.getElementById('fromEmail').value.trim();
+      const details = document.getElementById('eventDetails').value.trim();
+      const msg = document.getElementById('message').value.trim();
+
+      const subject = encodeURIComponent("Booking request — Classic Keys by Andrew");
+      const body = encodeURIComponent(
+        "Name: " + name + "\\n" +
+        "Email: " + email + "\\n" +
+        "Event details: " + details + "\\n\\n" +
+        "Message:\\n" + msg
+      );
+
+      // If no real email is set, show instructions instead of trying to send.
+      if(!CONTACT.email || CONTACT.email.includes("INSERT_EMAIL_HERE")){
+        alert("Please replace the placeholder email in the page source with Andrew's professional email address before using the form. Alternatively click 'Email Directly' to open your email client.");
+        return false;
+      }
+
+      // Open user's email client
+      window.location.href = "mailto:" + CONTACT.email + "?subject=" + subject + "&body=" + body;
+      return false;
+    }
+
+    function openMailto(){
+      if(!CONTACT.email || CONTACT.email.includes("INSERT_EMAIL_HERE")){
+        alert("Please replace the placeholder email in the page source with Andrew's professional email address to enable direct email.");
+        return;
+      }
+      window.location.href = "mailto:" + CONTACT.email;
+    }
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
